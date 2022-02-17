@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_memo_app/models/memo.dart';
+import 'package:flutter_memo_app/pages/memo_detail.dart';
 import 'memo_register.dart';
+import 'memo_detail.dart';
 
 class TopPage extends StatefulWidget {
   const TopPage({Key? key}) : super(key: key);
@@ -21,7 +23,16 @@ class _TopPageState extends State<TopPage> {
       body: ListView.builder(
           itemCount: memoList.length,
           itemBuilder: (context, index) {
-            return Text(memoList[index].title);
+            return InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MemoDetail()));
+              },
+              child: SizedBox(
+                height: 20,
+                child: Text(memoList[index].title),
+              ),
+            );
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {

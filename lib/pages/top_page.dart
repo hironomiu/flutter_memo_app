@@ -25,8 +25,11 @@ class _TopPageState extends State<TopPage> {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MemoDetail()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            MemoDetail(memo: memoList[index])));
               },
               child: SizedBox(
                 height: 20,

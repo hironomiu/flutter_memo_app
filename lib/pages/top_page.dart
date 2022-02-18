@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_memo_app/models/memo.dart';
 import 'package:flutter_memo_app/pages/memo_detail.dart';
@@ -35,7 +37,7 @@ class _TopPageState extends State<TopPage> {
                 height: 40,
                 child: Text(
                   memoList[index].title,
-                  style: TextStyle(fontSize: 30),
+                  style: const TextStyle(fontSize: 30),
                 ),
               ),
             );
@@ -45,8 +47,14 @@ class _TopPageState extends State<TopPage> {
           var ret = await Navigator.push(context,
               MaterialPageRoute(builder: (context) => const MemoRegister()));
           setState(() {
+            var id = memoList.isEmpty
+                ? 1
+                : memoList.map((e) => e.id).reduce(max) + 1;
+
+            debugPrint(id.toString());
+
             memoList
-                .add(Memo(id: 2, title: ret["title"], detail: ret["detail"]));
+                .add(Memo(id: id, title: ret["title"], detail: ret["detail"]));
           });
         },
         child: const Icon(Icons.add),

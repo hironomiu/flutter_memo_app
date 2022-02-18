@@ -15,6 +15,7 @@ class _MemoDetailState extends State<MemoDetail> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.memo.title),
+        backgroundColor: Colors.green,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

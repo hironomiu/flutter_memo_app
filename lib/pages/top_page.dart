@@ -21,7 +21,9 @@ class _TopPageState extends State<TopPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("メモ帳"),
+        backgroundColor: Colors.green,
       ),
+      backgroundColor: Colors.white,
       body: ListView.builder(
           itemCount: memoList.length,
           itemBuilder: (context, index) {
@@ -52,9 +54,11 @@ class _TopPageState extends State<TopPage> {
                 : memoList.map((e) => e.id).reduce(max) + 1;
 
             debugPrint(id.toString());
-
-            memoList
-                .add(Memo(id: id, title: ret["title"], detail: ret["detail"]));
+            debugPrint("ret: -- $ret");
+            if (ret != null) {
+              memoList.add(
+                  Memo(id: id, title: ret["title"], detail: ret["detail"]));
+            }
           });
         },
         child: const Icon(Icons.add),

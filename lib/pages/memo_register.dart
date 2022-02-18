@@ -16,6 +16,7 @@ class _MemoRegisterState extends State<MemoRegister> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("メモ登録"),
+        backgroundColor: Colors.green,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

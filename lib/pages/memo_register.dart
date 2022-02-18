@@ -21,20 +21,29 @@ class _MemoRegisterState extends State<MemoRegister> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Text("タイトル"),
+            const Text(
+              "タイトル",
+              style: TextStyle(fontSize: 30),
+            ),
             TextField(
               controller: _title,
             ),
-            Text("詳細"),
+            const Text(
+              "詳細",
+              style: TextStyle(fontSize: 30),
+            ),
             TextField(
               controller: _detail,
+              maxLines: 20,
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context)
-                      .pop({"title": _title.text, "detail": _detail.text});
+                  _title.text.length > 0 && _detail.text.length > 0
+                      ? Navigator.of(context)
+                          .pop({"title": _title.text, "detail": _detail.text})
+                      : null;
                 },
-                child: Text("登録"))
+                child: const Text("登録"))
           ],
         ),
       ),

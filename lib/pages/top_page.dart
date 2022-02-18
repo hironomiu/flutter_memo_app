@@ -32,8 +32,11 @@ class _TopPageState extends State<TopPage> {
                             MemoDetail(memo: memoList[index])));
               },
               child: SizedBox(
-                height: 20,
-                child: Text(memoList[index].title),
+                height: 40,
+                child: Text(
+                  memoList[index].title,
+                  style: TextStyle(fontSize: 30),
+                ),
               ),
             );
           }),

@@ -16,7 +16,13 @@ class _MemoDetailState extends State<MemoDetail> {
       appBar: AppBar(
         title: Text(widget.memo.title),
       ),
-      body: Text(widget.memo.detail),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          widget.memo.detail,
+          style: const TextStyle(fontSize: 30),
+        ),
+      ),
     );
   }
 }

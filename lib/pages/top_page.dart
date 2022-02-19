@@ -45,7 +45,8 @@ class _TopPageState extends State<TopPage> {
             );
           }),
       floatingActionButton: Theme(
-        data: ThemeData.dark(),
+        data: ThemeData(
+            colorScheme: ColorScheme.fromSwatch(accentColor: Colors.green)),
         child: FloatingActionButton(
           onPressed: () async {
             var ret = await Navigator.push(context,

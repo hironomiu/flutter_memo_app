@@ -11,10 +11,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // theme: ThemeData.dark().copyWith(
+      //   primaryColor: Colors.green,
+      //   scaffoldBackgroundColor: Colors.green,
+      // ),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
+        // scaffoldBackgroundColor: Colors.green,
+        primaryColor: Colors.blue,
       ),
       home: const TopPage(),
     );

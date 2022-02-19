@@ -44,24 +44,29 @@ class _TopPageState extends State<TopPage> {
               ),
             );
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          var ret = await Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const MemoRegister()));
-          setState(() {
-            var id = memoList.isEmpty
-                ? 1
-                : memoList.map((e) => e.id).reduce(max) + 1;
+      floatingActionButton: Theme(
+        data: ThemeData.dark(),
+        child: FloatingActionButton(
+          onPressed: () async {
+            var ret = await Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const MemoRegister()));
+            setState(() {
+              var id = memoList.isEmpty
+                  ? 1
+                  : memoList.map((e) => e.id).reduce(max) + 1;
 
-            debugPrint(id.toString());
-            debugPrint("ret: -- $ret");
-            if (ret != null) {
-              memoList.add(
-                  Memo(id: id, title: ret["title"], detail: ret["detail"]));
-            }
-          });
-        },
-        child: const Icon(Icons.add),
+              debugPrint(id.toString());
+              debugPrint("ret: -- $ret");
+              if (ret != null) {
+                memoList.add(
+                    Memo(id: id, title: ret["title"], detail: ret["detail"]));
+              }
+            });
+          },
+          child: const Icon(
+            Icons.add,
+          ),
+        ),
       ),
     );
   }

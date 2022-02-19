@@ -24,26 +24,40 @@ class _TopPageState extends State<TopPage> {
         backgroundColor: Colors.green,
       ),
       backgroundColor: Colors.white,
-      body: ListView.builder(
-          itemCount: memoList.length,
-          itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            MemoDetail(memo: memoList[index])));
-              },
-              child: SizedBox(
-                height: 40,
-                child: Text(
-                  memoList[index].title,
-                  style: const TextStyle(fontSize: 30),
-                ),
-              ),
-            );
-          }),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.builder(
+            itemCount: memoList.length,
+            itemBuilder: (context, index) {
+              return Column(
+                // 左寄せ
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  MemoDetail(memo: memoList[index])));
+                    },
+                    child: SizedBox(
+                      // 幅一杯でどこでもClickされても認識
+                      width: double.infinity,
+                      height: 40,
+                      child: Text(
+                        memoList[index].title,
+                        style: const TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                  const Divider(
+                    color: Colors.grey,
+                  )
+                ],
+              );
+            }),
+      ),
       floatingActionButton: Theme(
         data: ThemeData(
             colorScheme: ColorScheme.fromSwatch(accentColor: Colors.green)),
